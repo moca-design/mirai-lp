@@ -1,0 +1,222 @@
+/* ===== デザイントークン（信頼・きちんと感 × moca のやわらかさ） ===== */
+:root {
+  --paper: #f3f6ee;      /* ライトグリーンの基調（やわらかいセージ） */
+  --white: #ffffff;
+  --cream: #e7eedd;      /* 少し濃いセージ（交互のセクション） */
+  --ink: #2f3f36;        /* 信頼感のある深いグリーングレー（見出し） */
+  --ink-soft: #4c5b50;
+  --blue: #5f8f77;       /* 落ち着いたセージグリーン（アクセント） */
+  --blue-mist: #e9f0e2;  /* ライトグリーンのミスト */
+  --blue-line: #d3e0c9;  /* セージの罫線 */
+  --amber: #c2a15f;      /* チェック・強調のゴールド */
+  --amber-soft: #efe7cf;
+  --text: #37424f;
+  --text-soft: #66717e;
+  --text-mute: #98a1ab;
+  --line: #e8e3d8;
+
+  --maxw: 1060px;
+  --radius: 14px;
+  --shadow: 0 18px 44px rgba(41, 56, 74, 0.10);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", system-ui, sans-serif; font-weight: 400;
+  color: var(--text); background: var(--paper); line-height: 1.95; letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, .brand-name {
+  font-family: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+  font-weight: 700; letter-spacing: 0.02em; line-height: 1.5; color: var(--ink);
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+strong { color: var(--ink); font-weight: 700; }
+b { font-weight: 700; color: var(--ink); }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 26px; }
+.narrow { max-width: 760px; }
+.sp-only { display: none; }
+
+section { padding: 104px 0; position: relative; }
+.section-eyebrow {
+  font-family: "Cormorant Garamond", serif; color: var(--blue);
+  font-size: 15px; letter-spacing: 0.3em; text-transform: uppercase; text-align: center; margin-bottom: 18px;
+}
+.section-title { font-size: clamp(23px, 4.2vw, 33px); text-align: center; margin-bottom: 44px; }
+.section-title.left { text-align: left; }
+
+/* リビール */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+/* ===== ボタン ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 15px 30px; border-radius: 10px;
+  font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 15.5px; letter-spacing: 0.03em;
+  border: 1px solid transparent; cursor: pointer;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s;
+}
+.btn-primary { background: var(--ink); color: #fff; box-shadow: 0 12px 26px rgba(41, 56, 74, 0.24); }
+.btn-primary:hover { background: #33465c; transform: translateY(-3px); box-shadow: 0 18px 34px rgba(41, 56, 74, 0.3); }
+.btn-lg { padding: 18px 40px; font-size: 16.5px; }
+.btn-ghost { background: var(--white); color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { background: var(--cream); transform: translateY(-2px); }
+.btn-sm { padding: 9px 20px; font-size: 13.5px; border-radius: 8px; background: var(--ink); color: #fff; }
+.btn-sm:hover { background: #33465c; }
+
+.btn-stack { display: inline-flex; flex-direction: column; align-items: center; gap: 9px; }
+.btn-note-label { font-family: "Cormorant Garamond", "Zen Kaku Gothic New", serif; font-size: 13px; letter-spacing: 0.08em; color: var(--text-soft); }
+
+/* ===== ヘッダー ===== */
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 60; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
+.site-header.scrolled { background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: saturate(160%) blur(14px); box-shadow: 0 1px 0 var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand-icon { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 2px 10px rgba(41,56,74,0.2); }
+.brand-name { font-size: 19px; color: var(--ink); letter-spacing: 0.08em; }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a { color: var(--text-soft); font-size: 14px; transition: color .3s; }
+.nav a:not(.btn):hover { color: var(--ink); }
+.nav-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: 0; cursor: pointer; padding: 8px; }
+.nav-toggle span { width: 22px; height: 1.5px; background: var(--ink); border-radius: 2px; }
+
+/* ===== ヒーロー ===== */
+.hero {
+  min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden; padding: 120px 0 90px;
+  position: relative;
+  /* デスクの写真を背景に */
+  background: url("../assets/hero-desk.png") center/cover no-repeat;
+  background-color: var(--paper);
+}
+/* 文字を読みやすくする、あたたかい白のヴェール（中央ほど濃く） */
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 46%,
+    rgba(243, 246, 238, 0.87) 0%,
+    rgba(243, 246, 238, 0.68) 52%,
+    rgba(243, 246, 238, 0.54) 100%);
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-eyebrow { font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 500; color: var(--blue); font-size: 14px; letter-spacing: 0.14em; margin-bottom: 22px; text-shadow: 0 1px 12px rgba(243,246,238,0.9); }
+.hero-title { font-size: clamp(30px, 6.4vw, 52px); line-height: 1.4; margin-bottom: 28px; text-shadow: 0 2px 20px rgba(243,246,238,0.94); }
+.hero-lead { color: var(--ink-soft); font-size: clamp(15px, 2.3vw, 17.5px); font-weight: 400; max-width: 30em; margin: 0 auto 36px; text-shadow: 0 1px 14px rgba(243,246,238,0.94); }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: flex-start; }
+.scroll-cue { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); width: 26px; height: 42px; border: 1px solid var(--blue-line); border-radius: 14px; z-index: 1; }
+.scroll-cue span { position: absolute; top: 9px; left: 50%; width: 4px; height: 4px; margin-left: -2px; background: var(--blue); border-radius: 50%; animation: cue 1.8s var(--ease) infinite; }
+@keyframes cue { 0% { opacity: 0; transform: translateY(0);} 40%{opacity:1;} 100%{opacity:0; transform: translateY(16px);} }
+
+/* ===== 共感（こんな悩み） ===== */
+.worry { background: var(--paper); }
+.worry-list { list-style: none; display: flex; flex-direction: column; gap: 14px; max-width: 620px; margin: 0 auto 40px; }
+.worry-list li {
+  position: relative; background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+  padding: 20px 24px 20px 56px; color: var(--text-soft); font-size: 15.5px; box-shadow: 0 6px 18px rgba(41,56,74,0.05);
+}
+/* チェックボックス風のマーク */
+.worry-list li::before {
+  content: ""; position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; border: 1.5px solid var(--blue-line); border-radius: 4px;
+}
+.worry-bridge { text-align: center; font-family: "Zen Kaku Gothic New", sans-serif; font-size: clamp(16px, 2.7vw, 19px); color: var(--ink); line-height: 1.9; }
+
+/* ===== この記事で得られる価値 ===== */
+.value { background: var(--blue-mist); }
+.value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.value-card {
+  background: var(--white); border: 1px solid var(--blue-line); border-radius: var(--radius);
+  padding: 38px 28px 32px; text-align: center; box-shadow: 0 10px 28px rgba(47,63,54,0.06);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.value-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.value-ico { width: 54px; height: 54px; margin: 0 auto 16px; color: var(--blue); }
+.value-ico svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.value-from { color: var(--text-mute); font-size: 13.5px; margin-bottom: 2px; }
+.value-card h3 { font-size: 19px; margin-bottom: 14px; color: var(--ink); }
+.value-desc { color: var(--text-soft); font-size: 14.5px; font-weight: 300; }
+
+/* ===== 核心メッセージ ===== */
+.core { background: linear-gradient(180deg, var(--paper), var(--cream)); text-align: center; }
+.core-lead { font-family: "Zen Kaku Gothic New", sans-serif; font-size: clamp(26px, 5vw, 40px); color: var(--ink); line-height: 1.5; margin-bottom: 24px; }
+.core-lead strong { color: var(--blue); }
+.core-text { color: var(--ink-soft); font-size: 16px; font-weight: 400; max-width: 28em; margin: 0 auto; }
+
+/* ===== ワークシート3ステップ ===== */
+.steps { background: var(--paper); }
+.step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.step {
+  position: relative; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 40px 28px 32px; text-align: center; box-shadow: 0 10px 28px rgba(41,56,74,0.06);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.step:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.step-no { font-family: "Cormorant Garamond", serif; font-size: 15px; letter-spacing: 0.16em; color: var(--amber); margin-bottom: 12px; }
+.step h3 { font-size: 19px; margin-bottom: 12px; }
+.step p { color: var(--text-soft); font-size: 14.5px; font-weight: 300; }
+/* ステップをつなぐ番号の下線 */
+.step h3::after { content: ""; display: block; width: 28px; height: 2px; background: var(--amber); margin: 12px auto 0; border-radius: 2px; }
+
+/* ===== ワークシートの特長 ===== */
+.features { background: var(--cream); }
+.feature-list { display: flex; flex-direction: column; gap: 16px; max-width: 620px; margin: 0 auto; }
+.feature { display: flex; align-items: center; gap: 16px; background: var(--white); border-radius: 12px; padding: 18px 24px; border: 1px solid var(--line); }
+.feature-check { flex: none; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--amber-soft); color: var(--amber); font-weight: 700; }
+.feature p { color: var(--ink-soft); font-size: 15px; font-weight: 300; }
+
+/* ===== プロフィール ===== */
+.profile { background: var(--paper); }
+.profile-inner { display: grid; grid-template-columns: 180px 1fr; gap: 48px; align-items: center; }
+.profile-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 5px solid var(--white); box-shadow: var(--shadow); }
+.profile-body .section-eyebrow { text-align: left; }
+.profile-role { color: var(--blue); font-weight: 700; font-size: 14px; margin-bottom: 14px; }
+.profile-body > p { color: var(--text-soft); font-weight: 300; }
+
+/* ===== 記事を購入した方の声 ===== */
+.voice { background: linear-gradient(180deg, var(--paper), var(--blue-mist)); }
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.voice-card {
+  position: relative; background: var(--white); border: 1px solid var(--blue-line); border-radius: 18px;
+  padding: 42px 34px 30px; box-shadow: var(--shadow); font-size: 15px; color: var(--ink-soft); line-height: 2.05;
+}
+.voice-card::before { content: "\201C"; position: absolute; top: 8px; left: 20px; font-family: Georgia, serif; font-size: 58px; color: var(--blue-line); line-height: 1; }
+.voice-when { position: relative; font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; color: var(--blue); margin-bottom: 14px; }
+.voice-card p:not(.voice-when) { position: relative; }
+.voice-card b { color: var(--ink); font-weight: 700; }
+.voice-card footer { margin-top: 18px; text-align: right; color: var(--blue); font-weight: 700; font-size: 14px; }
+
+/* ===== こんな人におすすめ ===== */
+.for { background: var(--paper); }
+.for-list { list-style: none; display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin: 0 auto; }
+.for-list li { position: relative; padding: 16px 22px 16px 52px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; color: var(--text-soft); font-size: 15.5px; }
+.for-list li::before { content: "✓"; position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--amber); font-weight: 700; font-size: 17px; }
+
+/* ===== 最後のCTA ===== */
+.cta { background: linear-gradient(180deg, var(--blue-mist), var(--cream)); text-align: center; }
+.cta-title { font-size: clamp(25px, 5vw, 37px); margin-bottom: 14px; }
+.cta-lead { color: var(--ink-soft); font-weight: 300; margin-bottom: 34px; }
+
+/* ===== フッター ===== */
+.site-footer { background: var(--paper); border-top: 1px solid var(--line); padding: 50px 0; text-align: center; }
+.footer-copy { font-family: "Zen Kaku Gothic New", sans-serif; color: var(--ink); letter-spacing: 0.08em; margin-bottom: 18px; }
+.footer-sns { display: flex; gap: 26px; justify-content: center; margin-bottom: 18px; }
+.footer-sns a { color: var(--blue); font-size: 14px; font-weight: 500; transition: opacity .3s; }
+.footer-sns a:hover { opacity: 0.6; }
+.copyright { color: var(--text-mute); font-size: 12.5px; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 860px) {
+  .sp-only { display: inline; }
+  section { padding: 78px 0; }
+  .nav { display: none; }
+  .nav.open { display: flex; flex-direction: column; gap: 20px; position: absolute; top: 70px; left: 0; right: 0; background: color-mix(in srgb, var(--paper) 97%, transparent); backdrop-filter: blur(14px); padding: 26px; box-shadow: 0 1px 0 var(--line); text-align: center; }
+  .nav-toggle { display: flex; }
+  .step-grid, .value-grid, .voice-grid { grid-template-columns: 1fr; gap: 16px; }
+  .profile-inner { grid-template-columns: 1fr; text-align: center; gap: 26px; justify-items: center; }
+  .profile-body .section-eyebrow, .section-title.left { text-align: center; }
+  .voice-card { padding: 34px 26px 28px; }
+}
